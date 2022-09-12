@@ -31,10 +31,10 @@ def result():
         to_predict_list = list(map(int, to_predict_list))
         result = ValuePredictor(to_predict_list)
         
-        
+        d = {"prediction":result}
             
         response = app.response_class(
-        response=json.dumps(result),
+        response=json.dumps(d),
         status=200,
         mimetype='application/json'
         )
