@@ -3,7 +3,7 @@ import os
 import numpy as np
 import flask
 import pickle
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json
 
 #creating instance of the class
 app=Flask(__name__)
@@ -33,7 +33,12 @@ def result():
         
         
             
-        return render_template("result.html",prediction=result)
+        response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+        )
+        return response
 
  
 if __name__ == "__main__":
